@@ -1,3 +1,18 @@
-fetch('https://randomuser.me/api/?inc=name,location,email,picture')
+const gallery = document.querySelector('.gallery');
+
+fetch('https://randomuser.me/api/')
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => generatePerson(data));
+
+
+
+function generatePerson(data) {
+    const html = `
+    <img src='${data}' alt>
+    `;
+    gallery.insertAdjacentHTML('beforeend', html)
+
+};
+
+
+
