@@ -1,8 +1,8 @@
 const gallery = document.querySelector('.gallery');
 
-fetch('https://randomuser.me/api/')
+fetch('https://randomuser.me/api/?inc=picture,name,email,location/?page=3&results=12&seed=abc')
     .then(response => response.json())
-    .then(data => generatePerson(data));
+    .then(data => console.log(data));
 
 
 
