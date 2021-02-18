@@ -16,13 +16,11 @@ function generatePerson(data) {
         <div class="card-info-container">
             <h3 id="name" class="card-name cap">${data.results[0].name.first} ${data.results[0].name.last}</h3>
             <p class="card-text">${data.results[0].email}</p>
-            <p class="card-text cap">${data.results[0].city}, ${data.results[0].state}</p>
+            <p class="card-text cap">${data.results[0].location.city}, ${data.results[0].location.state}</p>
         </div>
     </div>
     `;
-
-
-gallery.insertAdjacentHTML('beforeend', html)
+    gallery.insertAdjacentHTML('beforeend', html)
 };
 
 
