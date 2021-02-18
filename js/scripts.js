@@ -1,8 +1,22 @@
 
 
-fetch('https://randomuser.me/api/?results=12&inc=name,location,email,picture')
-    .then(response => response.json())
-    .then(data => generatePerson(data));
+function fetchData(url) {
+    return fetch(url)
+            .then(response => response.json())
+            .then(data => generatePerson(data))
+}
+
+
+
+
+
+
+fetchData('https://randomuser.me/api/?results=12&inc=name,location,email,picture')
+
+
+// fetchData('https://randomuser.me/api/?results=12&inc=name,location,email,picture')
+//     .then(response => response.json())
+//     .then(data => generatePerson(data));
 
 
 
