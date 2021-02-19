@@ -13,8 +13,8 @@ function fetchData(url) {
 
 function generatePerson(data) {
     const gallery = document.querySelector('.gallery');
-    const person = data.results;
-    const html = '';
+    let person = data.results;
+    let html = '';
     data.results.forEach((emp) =>
         html += `
         <div class="card">
