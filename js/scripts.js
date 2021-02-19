@@ -13,24 +13,21 @@ function fetchData(url) {
 
 function generatePerson(data) {
     const gallery = document.querySelector('.gallery');
-    let person = data.results;
     let html = '';
     data.results.forEach((emp) =>
         html += `
         <div class="card">
                 <div class="card-img-container">
-                    <img class="card-img" src="${person[0].picture.large}" alt="profile picture">
+                    <img class="card-img" src="${emp.picture.large}" alt="profile picture">
                 </div>
             <div class="card-info-container">
-                <h3 id="name" class="card-name cap">${person[0].name.first} ${person[0].name.last}</h3>
-                <p class="card-text">${person[0].email}</p>
-                <p class="card-text cap">${person[0].location.city}, ${person[0].location.state}</p>
+                <h3 id="name" class="card-name cap">${emp.name.first} ${emp.name.last}</h3>
+                <p class="card-text">${emp.email}</p>
+                <p class="card-text cap">${emp.location.city}, ${emp.location.state}</p>
             </div>
         </div>
         `);
     gallery.insertAdjacentHTML('beforeend', html);
-    // person.forEach(generatePerson);
-    
 };
 
 
