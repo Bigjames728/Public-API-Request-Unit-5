@@ -25,11 +25,13 @@ function generatePerson(data) {
         </div>
     </div>
     `;
-    gallery.insertAdjacentHTML('beforeend', html)
+    gallery.insertAdjacentHTML('beforeend', html);
+    console.log(data.results);
 };
 
 
 
 fetchData('https://randomuser.me/api/?results=12&inc=name,location,email,picture')
 
-parseResponseToJson.forEach(generatePerson(data.results))
+// parseResponseToJson.forEach(generatePerson(data.results))
+
