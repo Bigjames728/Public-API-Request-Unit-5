@@ -1,24 +1,15 @@
 
 
+const parseResponseToJson = (res) => res.json();
+const generatePersonOnPage = (data) => generatePerson(data);
+
+
+
 function fetchData(url) {
     return fetch(url)
-            .then(response => response.json())
-            .then(data => generatePerson(data))
+            .then(parseResponseToJson)
+            .then(generatePersonOnPage)
 }
-
-
-
-
-
-
-fetchData('https://randomuser.me/api/?results=12&inc=name,location,email,picture')
-
-
-// fetchData('https://randomuser.me/api/?results=12&inc=name,location,email,picture')
-//     .then(response => response.json())
-//     .then(data => generatePerson(data));
-
-
 
 function generatePerson(data) {
     const gallery = document.querySelector('.gallery');
@@ -39,3 +30,6 @@ function generatePerson(data) {
 
 
 
+fetchData('https://randomuser.me/api/?results=12&inc=name,location,email,picture')
+
+parseResponseToJson.forEach(generatePerson(data.results))
