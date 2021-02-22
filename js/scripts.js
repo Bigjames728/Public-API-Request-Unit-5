@@ -42,7 +42,8 @@ fetchData('https://randomuser.me/api/?results=12&inc=name,location,email,picture
 
 
 function generateModal(data) {
-    const closeButton = document.getElementById('modal-close-btn');
+    let body = document.querySelector("body");
+    
 
 
 }
