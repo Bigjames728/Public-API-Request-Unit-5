@@ -64,11 +64,11 @@ function generateModal(id) {
 
 }
 
-generateModal();
 
-// document.querySelector('.card').addEventListener('click', (e) => {
-//     console.log(e);
-// })
+
+document.querySelector('.card').addEventListener('click', (e) => {
+    generateModal();
+})
 
 
 
