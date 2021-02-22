@@ -44,17 +44,17 @@ fetchData('https://randomuser.me/api/?results=12&inc=name,gender,location,email,
 
 
 function generateModal() {
-    let html = `
-    <div class="modal-container">
-        <div class="modal">
-            <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
-        <div class="modal-info-container">
-            
+    let modal = `
+        <div class="modal-container">
+            <div class="modal">
+                <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
+            <div class="modal-info-container">
+                
+            </div>
         </div>
-    </div>
-    `;
+        `;
 
-    gallery.insertAdjacentHTML('afterend', html)
+    gallery.insertAdjacentHTML('afterend', modal)
     document.querySelector(".modal-container").style.display = "block"; // I did this for now so that the modal shows up on refresh of page. Trying to get correct info to show up in modal.
 
     document.getElementById('modal-close-btn').addEventListener('click', () => {
@@ -64,10 +64,11 @@ function generateModal() {
 }
 
 function updateModal(emp) {
-    document.querySelector('.modal-info-container').innerHTML = '';
+    let modalInfo = document.querySelector('.modal-info-container');
+    let modal = document.querySelector('.modal-container');
+    modalInfo.innerHTML = '';
     
-
-    document.querySelector('.modal-info-container') += `
+    modalInfo += `
             <img class="modal-img" src="${emp.picture.large}" alt="profile picture">
                 <h3 id="name" class="modal-name cap">${emp.name.first} ${emp.name.last}</h3>
                 <p class="modal-text">${emp.email}</p>
@@ -77,11 +78,11 @@ function updateModal(emp) {
                 <p class="modal-text">${emp.location.street.number} ${emp.location.stree.name}, ${emp.location.city}, ${emp.location.state} ${emp.location.postcode}</p>
                 <p class="modal-text">Birthday: ${emp.dob.date}</p>
             `;
-            document.querySelector('.modal-info-container').insertAdjacentHTML('afterbegin', modalInfoContainer);
+    modal.insertAdjacentHTML('afterbegin', modalInfo);
 
 }
 
-function addClickabilityToCards(data) {
+function addClickHandler(data) {
     document.querySelectorAll('.card').forEach((card) => {
         addEventListener('click', () => {
             document.querySelector(".modal-container").style.display = "block";
