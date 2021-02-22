@@ -39,7 +39,13 @@ fetchData('https://randomuser.me/api/?results=12&inc=name,location,email,picture
 
 // Modal Code
 
-const closeButton = document.getElementById('modal-close-btn');
+
+
+function generateModal(data) {
+    const closeButton = document.getElementById('modal-close-btn');
+
+
+}
 
 document.querySelector('.card').addEventListener('click', (e) => {
     console.log(e);
