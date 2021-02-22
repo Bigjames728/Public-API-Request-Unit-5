@@ -41,16 +41,34 @@ fetchData('https://randomuser.me/api/?results=12&inc=name,location,email,picture
 
 
 
-function generateModal(data) {
+function generateModal(id) {
+    let el = document.getElementById(id);
     let body = document.querySelector("body");
-    
+    let bg = document.createElement("div");
+    bg.className = "modal-container";
+
+    body.appendChild(bg);
+
+    let close = document.createElement("span");
+    close.className = "modal-close-btn";
+    close.insertAdjacentHTML('beforeend', 'x');
+    close.addEventListener('click', function () {
+        let overlay = body.querySelector(".modal-container");
+        let closebtn = parent.querySelector(".modal-close-btn");
+
+        body.removeChild(overlay);
+
+        el.removeChild(closebtn);
+    });
 
 
 }
 
-document.querySelector('.card').addEventListener('click', (e) => {
-    console.log(e);
-})
+generateModal();
+
+// document.querySelector('.card').addEventListener('click', (e) => {
+//     console.log(e);
+// })
 
 
 
