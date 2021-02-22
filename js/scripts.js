@@ -10,6 +10,7 @@ function fetchData(url) {
             .then(parseResponseToJson)
             .then(generatePersonOnPage)
             .then(generateModal)
+            .then(addClickHandler)
             
 }
 
@@ -55,13 +56,15 @@ function generateModal() {
         `;
 
     gallery.insertAdjacentHTML('afterend', modal)
-    document.querySelector(".modal-container").style.display = "block"; // I did this for now so that the modal shows up on refresh of page. Trying to get correct info to show up in modal.
+    document.querySelector(".modal-container").style.display = "none"; 
 
     document.getElementById('modal-close-btn').addEventListener('click', () => {
         document.querySelector(".modal-container").style.display = "none";
         console.log("Modal should be closed now");
     })
 }
+
+
 
 function updateModal(emp) {
     let modalInfo = document.querySelector('.modal-info-container');
@@ -82,27 +85,16 @@ function updateModal(emp) {
 
 }
 
+
+
 function addClickHandler(data) {
-    document.querySelectorAll('.card').forEach((card) => {
+    document.querySelectorAll('.card').forEach(() => {
         addEventListener('click', () => {
             document.querySelector(".modal-container").style.display = "block";
-            updateModal(i);
+            
         })
-
+        updateModal(i);
     })
 }
 
 
-
-
-
-
-// below code is all the information that will change for every modal pop up inside of the modal-info-container div
-/* <img class="modal-img" src="${emp.picture.large}" alt="profile picture">
-            <h3 id="name" class="modal-name cap">${emp.name.first} ${emp.name.last}</h3>
-            <p class="modal-text">${emp.email}</p>
-            <p class="modal-text cap">${emp.location.city}</p>
-        <hr>
-            <p class="modal-text">${emp.cell}</p>
-            <p class="modal-text">${emp.location.street.number} ${emp.location.stree.name}, ${emp.location.city}, ${emp.location.state} ${emp.location.postcode}</p>
-            <p class="modal-text">Birthday: ${emp.dob.date}</p> */
