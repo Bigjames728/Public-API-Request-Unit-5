@@ -91,13 +91,13 @@ function updateModal(emp) {
 
 
 
-function addClickHandler() {
-    document.querySelectorAll('.card').forEach((item) => {
-        item.addEventListener('click', () => {
+function addClickHandler(data) {
+    document.querySelectorAll('.card').forEach((card) => {
+        card.addEventListener('click', () => {
             document.querySelector(".modal-container").style.display = "block";
             
         })
-        // updateModal(item);
+        updateModal(data);
     })
 }
 
