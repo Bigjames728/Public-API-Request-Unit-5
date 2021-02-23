@@ -49,8 +49,8 @@ function generateModal() {
         <div class="modal-container">
             <div class="modal">
                 <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
-            <div class="modal-info-container">
-                
+            </div>
+            <div class="modal-info-container">       
             </div>
         </div>
         `;
@@ -58,9 +58,9 @@ function generateModal() {
     gallery.insertAdjacentHTML('afterend', modal)
     document.querySelector(".modal-container").style.display = "none"; 
 
-    document.getElementById('modal-close-btn').addEventListener('click', () => {
+    document.getElementById('modal-close-btn').addEventListener('click', (e) => {
         document.querySelector(".modal-container").style.display = "none";
-        console.log("Modal should be closed now");
+        console.log(e);
     })
 }
 
@@ -78,22 +78,24 @@ function updateModal(emp) {
                 <p class="modal-text cap">${emp.location.city}</p>
                 <hr>
                 <p class="modal-text">${emp.cell}</p>
-                <p class="modal-text">${emp.location.street.number} ${emp.location.stree.name}, ${emp.location.city}, ${emp.location.state} ${emp.location.postcode}</p>
+                <p class="modal-text">${emp.location.street.number} ${emp.location.street.name}, ${emp.location.city}, ${emp.location.state} ${emp.location.postcode}</p>
                 <p class="modal-text">Birthday: ${emp.dob.date}</p>
             `;
+
+    
     modal.insertAdjacentHTML('afterbegin', modalInfo);
 
 }
 
 
 
-function addClickHandler(data) {
-    document.querySelectorAll('.card').forEach(() => {
-        addEventListener('click', () => {
+function addClickHandler() {
+    document.querySelectorAll('.card').forEach((item) => {
+        item.addEventListener('click', () => {
             document.querySelector(".modal-container").style.display = "block";
             
         })
-        updateModal(i);
+        // updateModal(item);
     })
 }
 
