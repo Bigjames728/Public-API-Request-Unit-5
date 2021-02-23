@@ -8,9 +8,11 @@ let arrayOfPeople;
 function fetchData(url) {
     return fetch(url)
             .then(parseResponseToJson)
-            .then(generatePersonOnPage)
-            .then(generateModal)
-            .then(addClickHandler)
+            .then( data => {
+                generatePersonOnPage(data);
+                generateModal();
+                addClickHandler();
+            })
             
 }
 
