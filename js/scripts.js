@@ -2,7 +2,7 @@
 
 const parseResponseToJson = (res) => res.json();
 const generatePersonOnPage = (data) => generatePerson(data);
-let arrayOfPeople;
+
 
 
 function fetchData(url) {
@@ -10,8 +10,8 @@ function fetchData(url) {
             .then(parseResponseToJson)
             .then( data => {
                 generatePersonOnPage(data);
-                generateModal();
-                addClickHandler();
+                generateModal(data);
+                addClickHandler(data);
             })
             
 }
@@ -46,7 +46,8 @@ fetchData('https://randomuser.me/api/?results=12&inc=name,gender,location,email,
 
 
 
-function generateModal() {
+function generateModal(emp) {
+    console.log(emp);
     let modal = `
         <div class="modal-container">
             <div class="modal">
@@ -69,35 +70,39 @@ function generateModal() {
 
 
 function updateModal(emp) {
+    console.log(emp);
+    
     let modalInfo = document.querySelector('.modal-info-container');
-    let modal = document.querySelector('.modal-container');
+    let modal = document.querySelector('.modal');
     modalInfo.innerHTML = '';
     
     modalInfo += `
-            <img class="modal-img" src="${emp.picture.large}" alt="profile picture">
-                <h3 id="name" class="modal-name cap">${emp.name.first} ${emp.name.last}</h3>
-                <p class="modal-text">${emp.email}</p>
-                <p class="modal-text cap">${emp.location.city}</p>
+            <img class="modal-img" src="${emp.results[0].picture.large}" alt="profile picture">
+                <h3 id="name" class="modal-name cap">${emp.results[0].name.first} ${emp.results[0].name.last}</h3>
+                <p class="modal-text">${emp.results[0].email}</p>
+                <p class="modal-text cap">${emp.results[0].location.city}</p>
                 <hr>
-                <p class="modal-text">${emp.cell}</p>
-                <p class="modal-text">${emp.location.street.number} ${emp.location.street.name}, ${emp.location.city}, ${emp.location.state} ${emp.location.postcode}</p>
-                <p class="modal-text">Birthday: ${emp.dob.date}</p>
+                <p class="modal-text">${emp.results[0].cell}</p>
+                <p class="modal-text">${emp.results[0].location.street.number} ${emp.results[0].location.street.name}, ${emp.results[0].location.city}, ${emp.results[0].location.state} ${emp.results[0].location.postcode}</p>
+                <p class="modal-text">Birthday: ${emp.results[0].dob.date}</p>
             `;
 
     
     modal.insertAdjacentHTML('afterbegin', modalInfo);
+    console.log(modalInfo);
 
 }
 
 
 
-function addClickHandler(data) {
+function addClickHandler(myData) {
+    console.log(myData);
     document.querySelectorAll('.card').forEach((card) => {
         card.addEventListener('click', () => {
             document.querySelector(".modal-container").style.display = "block";
-            
+            updateModal(myData);
         })
-        updateModal(data);
+        
     })
 }
 
