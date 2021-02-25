@@ -69,7 +69,7 @@ function generateModal(emp) {
 }
 
 
-
+// The below function is still making the modal concatinate the data instead of replacing the last persons info with the new persons info. Need to fix this.
 function updateModal(emp) {
     
     let modalInfo = document.querySelector('.modal-info-container');
