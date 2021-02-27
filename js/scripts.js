@@ -46,8 +46,7 @@ fetchData('https://randomuser.me/api/?results=12&inc=name,gender,location,email,
 
 
 
-function generateModal(emp) {
-    console.log(emp);
+function generateModal() {
     let modal = `
         <div class="modal-container">
             <div class="modal">
@@ -64,7 +63,6 @@ function generateModal(emp) {
 
     document.getElementById('modal-close-btn').addEventListener('click', (e) => {
         document.querySelector(".modal-container").style.display = "none";
-        console.log(e);
     })
 }
 
