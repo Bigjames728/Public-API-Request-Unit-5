@@ -71,10 +71,10 @@ function generateModal() {
 function updateModal(emp) {
     
     let modalInfo = document.querySelector('.modal-info-container');
-    let modal = document.querySelector('.modal');
+    
     modalInfo.innerHTML = '';
     
-    modalInfo = `
+    modalInfo.innerHTML = `
         <img class="modal-img" src="${emp.picture.large}" alt="profile picture">
             <h3 id="name" class="modal-name cap">${emp.name.first} ${emp.name.last}</h3>
             <p class="modal-text">${emp.email}</p>
@@ -85,7 +85,7 @@ function updateModal(emp) {
             <p class="modal-text">Birthday: ${emp.dob.date}</p>
         `;
 
-    modal.insertAdjacentHTML('afterbegin', modalInfo);
+    
 }
 
 
