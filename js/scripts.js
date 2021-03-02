@@ -20,7 +20,7 @@ function fetchData(url) {
 //Below I've called my fetchData function and added the API as an argument.
 fetchData('https://randomuser.me/api/?results=12&inc=name,gender,location,email,picture,cell,dob,nat&nat=au,br,ca,us')
 
-//Search functionality below. I selectred the search-container div and assigned it to the variable searchDiv. I then inserted the proper HTML into the search-div using insertAdjacentHTML with beforeend.
+//Search functionality below. I selected the search-container div and assigned it to the variable searchDiv. I then inserted the proper HTML into the search-div using insertAdjacentHTML with beforeend.
 const searchDiv = document.querySelector('.search-container');
 searchDiv.insertAdjacentHTML('beforeend', `
         <form action="#" method="get">
