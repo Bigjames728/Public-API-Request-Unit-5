@@ -1,3 +1,8 @@
+
+//Global variables 
+const gallery = document.querySelector('.gallery');
+
+
 //The fetchData function serves as a template for fetching data from an API (or url), parsing the data to JSON, then passing that JSON to the next 3 functions (generatePersonOnPage, generateModal, and addClickHandler).
 const parseResponseToJson = (res) => res.json();
 const generatePersonOnPage = (data) => generatePerson(data);
@@ -15,10 +20,22 @@ function fetchData(url) {
 //Below I've called my fetchData function and added the API as an argument.
 fetchData('https://randomuser.me/api/?results=12&inc=name,gender,location,email,picture,cell,dob,nat&nat=au,br,ca,us')
 
+//Search functionality below. I selectred the search-container div and assigned it to the variable searchDiv. I then inserted the proper HTML into the search-div using insertAdjacentHTML with beforeend.
+const searchDiv = document.querySelector('.search-container');
+searchDiv.insertAdjacentHTML('beforeend', `
+        <form action="#" method="get">
+            <input type="search" id="search-input" class="search-input" placeholder="Search...">
+            <input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">
+        </form>
+`);
+
+
+
+
 //The generatePerson function pulls everyone's data from the API (I specified 12 in the API itself) and runs a forEach loop to add each of the 12 peoples info to the card that is then added to the gallery. This shows
 //the 12 employees on the web page.
 function generatePerson(data) {
-    const gallery = document.querySelector('.gallery');
+    
     let html = '';
     data.results.forEach((emp) =>
         html += `
