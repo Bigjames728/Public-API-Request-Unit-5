@@ -67,13 +67,17 @@ function generateModal() {
 }
 
 
-// The below function is still making the modal concatinate the data instead of replacing the last persons info with the new persons info. Need to fix this.
+
 function updateModal(emp) {
-    
+    //The below code is to get the DOB data and structure it like mm/dd/yyyy on the modal
+    const date = new Date (`${emp.dob.date}`);
+    const month = date.getMonth() + 1,
+            day = date.getDate(),
+            year = date.getFullYear();
+    const mmddyy = `${month}/${day}/${year}`;
+    //The below code selects the modal-info-container and sets the innerHTML to empty. Then, I set the innerHTML to the employee that is clicked.
     let modalInfo = document.querySelector('.modal-info-container');
-    
     modalInfo.innerHTML = '';
-    
     modalInfo.innerHTML = `
         <img class="modal-img" src="${emp.picture.large}" alt="profile picture">
             <h3 id="name" class="modal-name cap">${emp.name.first} ${emp.name.last}</h3>
@@ -82,10 +86,8 @@ function updateModal(emp) {
             <hr>
             <p class="modal-text">${emp.cell}</p>
             <p class="modal-text">${emp.location.street.number} ${emp.location.street.name}, ${emp.location.city}, ${emp.location.state} ${emp.location.postcode}</p>
-            <p class="modal-text">Birthday: ${emp.dob.date}</p>
+            <p class="modal-text">Birthday: ${mmddyy}</p>
         `;
-
-    
 }
 
 
