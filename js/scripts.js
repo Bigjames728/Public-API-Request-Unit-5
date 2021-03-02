@@ -1,9 +1,6 @@
-
-
+//The fetchData function serves as a template for fetching data from an API (or url), parsing the data to JSON, then passing that JSON to the next 3 functions (generatePersonOnPage, generateModal, and addClickHandler).
 const parseResponseToJson = (res) => res.json();
 const generatePersonOnPage = (data) => generatePerson(data);
-
-
 
 function fetchData(url) {
     return fetch(url)
@@ -13,9 +10,13 @@ function fetchData(url) {
                 generateModal(data);
                 addClickHandler(data);
             })
-            
 }
 
+//Below I've called my fetchData function and added the API as an argument.
+fetchData('https://randomuser.me/api/?results=12&inc=name,gender,location,email,picture,cell,dob,nat&nat=au,br,ca,us')
+
+//The generatePerson function pulls everyone's data from the API (I specified 12 in the API itself) and runs a forEach loop to add each of the 12 peoples info to the card that is then added to the gallery. This shows
+//the 12 employees on the web page.
 function generatePerson(data) {
     const gallery = document.querySelector('.gallery');
     let html = '';
@@ -35,29 +36,17 @@ function generatePerson(data) {
     gallery.insertAdjacentHTML('beforeend', html);
 };
 
-
-
-
-fetchData('https://randomuser.me/api/?results=12&inc=name,gender,location,email,picture,cell,dob,nat&nat=au,br,ca,us')
-
-
-
-// Modal Code
-
-
-
+//The below function generates the initial modal with the elements of it that will always remain the same, like the modal-container div, modal div, and the close button. It then inserts the modal window into the gallery for viewing. 
 function generateModal() {
     let modal = `
         <div class="modal-container">
             <div class="modal">
                 <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
-            
                 <div class="modal-info-container">
                 </div>       
             </div>
         </div>
         `;
-
     gallery.insertAdjacentHTML('afterend', modal)
     document.querySelector(".modal-container").style.display = "none"; 
 
@@ -65,8 +54,6 @@ function generateModal() {
         document.querySelector(".modal-container").style.display = "none";
     })
 }
-
-
 
 function updateModal(emp) {
     //The below code is to get the DOB data and structure it like mm/dd/yyyy on the modal
@@ -90,17 +77,13 @@ function updateModal(emp) {
         `;
 }
 
-
-
+//The below function adds a click handler to each card in the gallery to make a modal window pop up on click and updates the modal window with the currently clicked employees info.
 function addClickHandler(myData) {
-    
     document.querySelectorAll('.card').forEach((card, i) => {
         card.addEventListener('click', () => {
             document.querySelector(".modal-container").style.display = "block";
-            
             updateModal(myData.results[i]);
         })
-        
     })
 }
 
