@@ -1,6 +1,7 @@
 
 //Global variables 
 const gallery = document.querySelector('.gallery');
+const card = document.querySelector('.card');
 
 
 //The fetchData function serves as a template for fetching data from an API (or url), parsing the data to JSON, then passing that JSON to the next 3 functions (generatePersonOnPage, generateModal, and addClickHandler).
@@ -28,6 +29,23 @@ searchDiv.insertAdjacentHTML('beforeend', `
             <input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">
         </form>
 `);
+
+const searchBtn = document.querySelector('#search-submit');
+const searchInput = document.querySelector('#search-input');
+
+searchBtn.addEventListener('click', (e) => {
+    e.preventDefault;
+    card.forEach((card) => {
+        if (card.name.tooLowerCase().includes(searchInput.value)) {
+            style.display = 'block';
+        } else {
+            style.display = 'none';
+        }
+    })
+    
+
+})
+
 
 
 
