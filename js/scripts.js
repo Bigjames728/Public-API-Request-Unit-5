@@ -2,21 +2,25 @@
 //Global variables 
 const gallery = document.querySelector('.gallery');
 const card = document.querySelector('.card');
+let peopleNames = [];
 
 
 //The fetchData function serves as a template for fetching data from an API (or url), parsing the data to JSON, then passing that JSON to the next 3 functions (generatePersonOnPage, generateModal, and addClickHandler).
-const parseResponseToJson = (res) => res.json();
+// const parseResponseToJson = ;
 const generatePersonOnPage = (data) => generatePerson(data);
+
+
 
 function fetchData(url) {
     return fetch(url)
-            .then(parseResponseToJson)
+            .then((res) => peopleNames = res.json())
             .then( data => {
                 generatePersonOnPage(data);
                 generateModal(data);
                 addClickHandler(data);
             })
 }
+
 
 //Below I've called my fetchData function and added the API as an argument.
 fetchData('https://randomuser.me/api/?results=12&inc=name,gender,location,email,picture,cell,dob,nat&nat=au,br,ca,us')
@@ -33,20 +37,27 @@ searchDiv.insertAdjacentHTML('beforeend', `
 const searchBtn = document.querySelector('#search-submit');
 const searchInput = document.querySelector('#search-input');
 
-searchBtn.addEventListener('click', (e) => {
-    e.preventDefault;
-    card.forEach((card) => {
-        if (card.name.tooLowerCase().includes(searchInput.value)) {
-            style.display = 'block';
-        } else {
-            style.display = 'none';
-        }
-    })
+
+// searchBtn.addEventListener('click', (e) => {
+//     e.preventDefault;
+//     card.forEach((card) => {
+//         if (card.name.tooLowerCase().includes(searchInput.value)) {
+//             style.display = 'block';
+//         } else {
+//             style.display = 'none';
+//         }
+//     })
     
 
-})
+// })
 
-
+searchInput.addEventListener('keyup', (e) => {
+    const searchString = e.target.value;
+    const filteredPeople = peopleNames.filter( people => {
+        return (people.name.includes(searchString));
+    });
+    console.log(filteredPeople);
+});
 
 
 
