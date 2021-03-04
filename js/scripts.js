@@ -8,12 +8,13 @@ let peopleNames = [];
 //The fetchData function serves as a template for fetching data from an API (or url), parsing the data to JSON, then passing that JSON to the next 3 functions (generatePersonOnPage, generateModal, and addClickHandler).
 // const parseResponseToJson = ;
 const generatePersonOnPage = (data) => generatePerson(data);
+const parseResponseToJson = (res) => res.json();
 
 
 
 function fetchData(url) {
     return fetch(url)
-            .then((res) => peopleNames = res.json())
+            .then(parseResponseToJson)
             .then( data => {
                 generatePersonOnPage(data);
                 generateModal(data);
