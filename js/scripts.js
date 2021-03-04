@@ -1,7 +1,7 @@
 
 //Global variables 
 const gallery = document.querySelector('.gallery');
-const card = document.querySelector('.card');
+
 let peopleNames = [];
 
 
@@ -18,6 +18,7 @@ function fetchData(url) {
             .then( data => {
                 generatePersonOnPage(data);
                 generateModal(data);
+                
                 addClickHandler(data);
             })
 }
@@ -35,14 +36,56 @@ searchDiv.insertAdjacentHTML('beforeend', `
         </form>
 `);
 
-const searchBtn = document.querySelector('#search-submit');
+
+
+
+
 const searchInput = document.querySelector('#search-input');
 
+function searchFunctionality() {
+    const cards = document.querySelectorAll('.card');
+    const names = document.querySelectorAll('#name');
+    console.log(searchInput);
+    console.log(cards);
 
-searchBtn.addEventListener('click', (e) => {
-    e.preventDefault;
-    card.forEach((card) => {
-        console.log(card);
+    for (let i = 0; i < names.length; i++) {
+       console.log(names[i]);
+       
+       
+        if (searchInput.value.length != 0 && names[i].textContent.toLowerCase().includes(searchInput.value.toLowerCase())) {
+            cards[i].style.display = 'block'; 
+        } else {
+            cards[i].style.display = 'none';
+        }
+    }
+
+}
+
+searchInput.addEventListener('keyup', (e) => {
+    e.preventDefault();
+    searchFunctionality();
+})
+
+
+
+
+
+
+
+
+
+
+// const searchBtn = document.querySelector('#search-submit');
+// const searchInput = document.querySelector('#search-input');
+
+
+// searchBtn.addEventListener('click', (e) => {
+//     const card = document.querySelectorAll('.card');
+//     const names = document.querySelectorAll('#name');
+//     e.preventDefault;
+    
+//     card.forEach((card) => {
+//         console.log(card);
         
         
         // if (card.name.tooLowerCase().includes(searchInput.value)) {
@@ -50,9 +93,9 @@ searchBtn.addEventListener('click', (e) => {
         // } else {
         //     style.display = 'none';
         // }
-    })
+//     })
     
-})
+// })
 
 
 
