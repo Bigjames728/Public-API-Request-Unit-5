@@ -39,26 +39,21 @@ const searchBtn = document.querySelector('#search-submit');
 const searchInput = document.querySelector('#search-input');
 
 
-// searchBtn.addEventListener('click', (e) => {
-//     e.preventDefault;
-//     card.forEach((card) => {
-//         if (card.name.tooLowerCase().includes(searchInput.value)) {
-//             style.display = 'block';
-//         } else {
-//             style.display = 'none';
-//         }
-//     })
+searchBtn.addEventListener('click', (e) => {
+    e.preventDefault;
+    card.forEach((card) => {
+        console.log(card);
+        
+        
+        // if (card.name.tooLowerCase().includes(searchInput.value)) {
+        //     style.display = 'block';
+        // } else {
+        //     style.display = 'none';
+        // }
+    })
     
+})
 
-// })
-
-searchInput.addEventListener('keyup', (e) => {
-    const searchString = e.target.value;
-    const filteredPeople = peopleNames.filter( people => {
-        return (people.name.includes(searchString));
-    });
-    console.log(filteredPeople);
-});
 
 
 
