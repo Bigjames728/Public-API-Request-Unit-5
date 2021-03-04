@@ -2,7 +2,6 @@
 //Global variables 
 const gallery = document.querySelector('.gallery');
 
-let peopleNames = [];
 
 
 //The fetchData function serves as a template for fetching data from an API (or url), parsing the data to JSON, then passing that JSON to the next 3 functions (generatePersonOnPage, generateModal, and addClickHandler).
@@ -39,66 +38,28 @@ searchDiv.insertAdjacentHTML('beforeend', `
 
 
 
-
+//Below is the function I created to give the search box its functionality. 
 const searchInput = document.querySelector('#search-input');
+const searchBtn = document.querySelector('#search-submit');
 
 function searchFunctionality() {
     const cards = document.querySelectorAll('.card');
     const names = document.querySelectorAll('#name');
-    console.log(searchInput);
-    console.log(cards);
-
+    
     for (let i = 0; i < names.length; i++) {
-       console.log(names[i]);
-       
-       
-        if (searchInput.value.length != 0 && names[i].textContent.toLowerCase().includes(searchInput.value.toLowerCase())) {
-            cards[i].style.display = 'block'; 
+        if (names[i].textContent.toLowerCase().includes(searchInput.value.toLowerCase())) {
+            cards[i].style.display = 'flex'; 
         } else {
             cards[i].style.display = 'none';
         }
     }
+};
 
-}
-
+//Below is the keyup event listener with the searchFunctionality() function called inside (no need for a submit button click event listener since I have the keyup listener that udpates results as I type).
 searchInput.addEventListener('keyup', (e) => {
     e.preventDefault();
     searchFunctionality();
 })
-
-
-
-
-
-
-
-
-
-
-// const searchBtn = document.querySelector('#search-submit');
-// const searchInput = document.querySelector('#search-input');
-
-
-// searchBtn.addEventListener('click', (e) => {
-//     const card = document.querySelectorAll('.card');
-//     const names = document.querySelectorAll('#name');
-//     e.preventDefault;
-    
-//     card.forEach((card) => {
-//         console.log(card);
-        
-        
-        // if (card.name.tooLowerCase().includes(searchInput.value)) {
-        //     style.display = 'block';
-        // } else {
-        //     style.display = 'none';
-        // }
-//     })
-    
-// })
-
-
-
 
 //The generatePerson function pulls everyone's data from the API (I specified 12 in the API itself) and runs a forEach loop to add each of the 12 peoples info to the card that is then added to the gallery. This shows
 //the 12 employees on the web page.
