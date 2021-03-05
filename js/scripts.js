@@ -17,7 +17,7 @@ function fetchData(url) {
             .then( data => {
                 generatePersonOnPage(data);
                 generateModal(data);
-                nextModal();
+                nextPrevModal();
                 
                 addClickHandler(data);
             })
@@ -99,8 +99,8 @@ function generateModal() {
     })
 }
 
-//Below is a function that adds the next and previous buttons to the modal window - still need to finish
-function nextModal() {
+//Below is a function that adds the next and previous buttons to the modal window - still need to finish adding functionality to buttons.
+function nextPrevModal() {
     let modal = document.querySelector('.modal-container');
     let nextBtn = `
             <div class="modal-btn-container">
