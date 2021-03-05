@@ -17,6 +17,7 @@ function fetchData(url) {
             .then( data => {
                 generatePersonOnPage(data);
                 generateModal(data);
+                nextModal();
                 
                 addClickHandler(data);
             })
@@ -34,9 +35,6 @@ searchDiv.insertAdjacentHTML('beforeend', `
             <input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">
         </form>
 `);
-
-
-
 
 //Below is the function I created to give the search box its functionality. 
 const searchInput = document.querySelector('#search-input');
@@ -99,6 +97,18 @@ function generateModal() {
     document.getElementById('modal-close-btn').addEventListener('click', (e) => {
         document.querySelector(".modal-container").style.display = "none";
     })
+}
+
+//Below is a function that adds the next and previous buttons to the modal window - still need to finish
+function nextModal() {
+    let modal = document.querySelector('.modal-container');
+    let nextBtn = `
+            <div class="modal-btn-container">
+                <button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
+                <button type="button" id="modal-next" class="modal-next btn">Next</button>
+            </div>`;
+    modal.insertAdjacentHTML('beforeend', nextBtn);
+
 }
 
 function updateModal(emp) {
