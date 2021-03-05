@@ -112,11 +112,11 @@ function nextPrevModal() {
     modal.insertAdjacentHTML('afterend', nextPrevBtn);
 
 nextBtn.addEventListener('click', (e) => {
-
+    console.log(nextBtn);
 })
 
 prevBtn.addEventListener('click', (e) => {
-    
+    console.log(prevBtn);
 })
 
 
