@@ -102,12 +102,24 @@ function generateModal() {
 //Below is a function that adds the next and previous buttons to the modal window - still need to finish adding functionality to buttons (I also changed the modal button container css to get rid of border and I liked it better, ask about this!).
 function nextPrevModal() {
     let modal = document.querySelector('.modal-info-container');
+    let nextBtn = document.querySelector('#modal-next');
+    let prevBtn = document.querySelector('#modal-prev');
     let nextPrevBtn = `
             <div class="modal-btn-container">
                 <button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
                 <button type="button" id="modal-next" class="modal-next btn">Next</button>
             </div>`;
     modal.insertAdjacentHTML('afterend', nextPrevBtn);
+
+nextBtn.addEventListener('click', (e) => {
+
+})
+
+prevBtn.addEventListener('click', (e) => {
+    
+})
+
+
 
 }
 
