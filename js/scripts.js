@@ -100,7 +100,7 @@ function generateModal() {
 }
 
 //Below is a function that adds the next and previous buttons to the modal window - still need to finish adding functionality to buttons (I also changed the modal button container css to get rid of border and I liked it better, ask about this!).
-function nextPrevModal() {
+function nextPrevModal(data) {
     let modal = document.querySelector('.modal-info-container');
     
     let nextPrevBtn = `
@@ -115,7 +115,7 @@ function nextPrevModal() {
     let cards = document.querySelectorAll('.card');
 
     for (let i = 0; i < cards.length; i++) {
-        index = '';
+        index = data.results[i];
     }
     nextBtn.addEventListener('click', (e) => {
         console.log(nextBtn);
