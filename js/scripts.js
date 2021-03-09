@@ -115,25 +115,24 @@ function nextPrevModal(data) {
     let prevBtn = document.querySelector('.modal-prev');
     let cards = document.querySelectorAll('.card');
 
-    for (let i = 0; i < cards.length; i++) {
-        let newArray = [];
-        index = data.results[i];
-        newArray.push(index);
-        index = newArray.indexOf(currentCard);
+    // for (let i = 0; i < cards.length; i++) {
+    //     let newArray = [];
+    //     index = data.results[i];
+    //     newArray.push(index);
+    //     index = newArray.indexOf(currentCard);
         
-        console.log(newArray);
-    }
+    //     console.log(newArray);
+    // }
     nextBtn.addEventListener('click', (e) => {
         console.log(nextBtn);
-        console.log(index);
-        
-        index++;
+        currentCard++;
+        updateModal(data.results[currentCard]);
     })
 
     prevBtn.addEventListener('click', (e) => {
         console.log(prevBtn);
-        index--;
-        console.log(index);
+        currentCard--;
+        updateModal(data.results[currentCard]);
     })
 
 }
@@ -165,7 +164,8 @@ function addClickHandler(myData) {
     document.querySelectorAll('.card').forEach((card, i) => {
         card.addEventListener('click', () => {
             document.querySelector(".modal-container").style.display = "block";
-            updateModal(myData.results[i]);
+            currentCard = i;
+            updateModal(myData.results[currentCard]);
         })
     })
 }
