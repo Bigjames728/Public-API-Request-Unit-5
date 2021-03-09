@@ -1,6 +1,7 @@
 
 //Global variables 
 const gallery = document.querySelector('.gallery');
+let currentCard = 0;
 
 
 
@@ -115,19 +116,25 @@ function nextPrevModal(data) {
     let cards = document.querySelectorAll('.card');
 
     for (let i = 0; i < cards.length; i++) {
+        let newArray = [];
         index = data.results[i];
+        newArray.push(index);
+        index = newArray.indexOf(currentCard);
+        
+        console.log(newArray);
     }
     nextBtn.addEventListener('click', (e) => {
         console.log(nextBtn);
+        console.log(index);
+        
         index++;
     })
 
     prevBtn.addEventListener('click', (e) => {
         console.log(prevBtn);
         index--;
+        console.log(index);
     })
-
-
 
 }
 
