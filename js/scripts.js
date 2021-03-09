@@ -45,7 +45,7 @@ function searchFunctionality() {
     const cards = document.querySelectorAll('.card');
     const names = document.querySelectorAll('#name');
     
-    for (let i = 0; i < names.length; i++) {
+    for (let i = 0; i < cards.length; i++) {
         if (names[i].textContent.toLowerCase().includes(searchInput.value.toLowerCase())) {
             cards[i].style.display = 'flex'; 
         } else {
