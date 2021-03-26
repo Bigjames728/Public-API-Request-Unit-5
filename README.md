@@ -1,4 +1,4 @@
-# Public API Request Unit 6
+# Public API Request Unit 5
 This app allows you to generate 12 random employees and dynamically display their picture, name, email and location on the web page. You are then able to click on a specific employee to 
 show a modal window pop up that provides some deeper info for you such as their cell number, address and date of birth. I have also added functionality to move between modal windows with
 next and previous buttons as well as search functionality to search through the employees displayed on the page.
